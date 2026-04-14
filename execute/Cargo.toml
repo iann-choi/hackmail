@@ -1,0 +1,15 @@
+[package]
+name = "execute"
+version = "0.1.0"
+edition = "2024"
+
+[profile.release]
+opt-level = "z"     # 크기 최적화 (s보다 더 공격적)
+lto = true          # 링크 타임 최적화 — 사용하지 않는 코드 제거
+codegen-units = 1   # 단일 코드 생성 단위 — LTO 효과 극대화
+strip = true        # 디버그 심볼 제거
+panic = "abort"     # 패닉 처리 코드 축소
+
+[dependencies]
+crossterm = "0.28"
+rand = "0.8"
